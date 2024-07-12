@@ -1,0 +1,692 @@
+{
+	"info": {
+		"_postman_id": "ee20f946-9eab-4362-ae4a-43dfa5a5f479",
+		"name": "project1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "35994472"
+	},
+	"item": [
+		{
+			"name": "tasks",
+			"item": [
+				{
+					"name": "get",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is 'text/xml'\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/xml\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is not empty\", function () {",
+									"    const responseData = xml2Json(pm.response.text());",
+									"    ",
+									"    pm.expect(responseData).to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the response schema\", function () {",
+									"    const responseData = xml2Json(pm.response.text());",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than or equal to 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.at.most(200);",
+									"});",
+									"pm.test(\"Response time is less than or equal to 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.at.most(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8000/api/tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "2|EplF9XBWJRsPrfAuw3npHMHRCOmF0zlDWlRc2rZx21df45dc",
+								"type": "text"
+							}
+						],
+						"url": "http://127.0.0.1:8000/api/task_delete/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "2|EplF9XBWJRsPrfAuw3npHMHRCOmF0zlDWlRc2rZx21df45dc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/task_create?user_id=1&project_id=1&title=dmfnmsd,nf,&description=jdsfjkds&due_date=2002-05-01&status=inprogress",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"task_create"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "project_id",
+									"value": "1"
+								},
+								{
+									"key": "title",
+									"value": "dmfnmsd,nf,"
+								},
+								{
+									"key": "description",
+									"value": "jdsfjkds"
+								},
+								{
+									"key": "due_date",
+									"value": "2002-05-01"
+								},
+								{
+									"key": "status",
+									"value": "inprogress"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/task_update/1?user_id=1&project_id=1&title=gfdgdfg&description=gfdgdffddfg&due_date=2002-01-02&status=queue",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"task_update",
+								"1"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "project_id",
+									"value": "1"
+								},
+								{
+									"key": "title",
+									"value": "gfdgdfg"
+								},
+								{
+									"key": "description",
+									"value": "gfdgdffddfg"
+								},
+								{
+									"key": "due_date",
+									"value": "2002-01-02"
+								},
+								{
+									"key": "status",
+									"value": "queue"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8000/api/task/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/register?name=ahmad&email=ahmadalkhder2002g@gmail.com&password=ppppppp1232p",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"register"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "ahmad"
+								},
+								{
+									"key": "email",
+									"value": "ahmadalkhder2002g@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "ppppppp1232p"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login?email=ahmadalkhder2002g@gmail.com&password=ppppppp1232p&",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "ahmadalkhder2002g@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "ppppppp1232p"
+								},
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8000/api/users"
+					},
+					"response": []
+				},
+				{
+					"name": "get_user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://127.0.0.1:8000/api/user/2"
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://127.0.0.1:8000/api/user/delete/2"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/update/1?name=ss&email=ss@gmail.com&password=12345678",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"update",
+								"1"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "ss"
+								},
+								{
+									"key": "email",
+									"value": "ss@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "12345678"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "token_user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": {
+								"secret": "",
+								"algorithm": "HS256",
+								"isSecretBase64Encoded": false,
+								"payload": "{}",
+								"addTokenTo": "header",
+								"headerPrefix": "Bearer",
+								"queryParamKey": "token",
+								"header": "{}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8000/api/genrate_api_token/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "project",
+			"item": [
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is in XML format\", function () {",
+									"    const xmlResponse = pm.response.text();",
+									"    ",
+									"    pm.expect(xmlResponse).to.include('<?xml');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is not null\", function () {",
+									"    const responseData = xml2Json(pm.response.text());",
+									"    ",
+									"    pm.expect(responseData).to.not.be.null;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the schema of the response body\", function () {",
+									"    const responseData = xml2Json(pm.response.text());",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "2|EplF9XBWJRsPrfAuw3npHMHRCOmF0zlDWlRc2rZx21df45dc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/create?name=doctors&description=this naice ds !!!!!!",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"create"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "doctors"
+								},
+								{
+									"key": "description",
+									"value": "this naice ds !!!!!!"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "2|EplF9XBWJRsPrfAuw3npHMHRCOmF0zlDWlRc2rZx21df45dc",
+								"type": "text"
+							}
+						],
+						"url": "http://127.0.0.1:8000/api/project/delete/2"
+					},
+					"response": []
+				},
+				{
+					"name": "get_All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8000/api/projects"
+					},
+					"response": []
+				},
+				{
+					"name": "get_project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://127.0.0.1:8000/api/project/1"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/project/update/1?name=ooppee&description=dsnfsd,fsf",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"project",
+								"update",
+								"1"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "ooppee"
+								},
+								{
+									"key": "description",
+									"value": "dsnfsd,fsf"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "invitation",
+			"item": [
+				{
+					"name": "addInvitation-sendMail",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "2|EplF9XBWJRsPrfAuw3npHMHRCOmF0zlDWlRc2rZx21df45dc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/send?email=ahmadalkhder2002g.2@gmail.com&description=Hello ahmad haw are you &project_id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"send"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "ahmadalkhder2002g.2@gmail.com"
+								},
+								{
+									"key": "description",
+									"value": "Hello ahmad haw are you "
+								},
+								{
+									"key": "project_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_invitation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://127.0.0.1:8000/api/get/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "project",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8000/api/CommentsP"
+					},
+					"response": []
+				},
+				{
+					"name": "Task",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8000/api/CommentsT"
+					},
+					"response": []
+				},
+				{
+					"name": "addCommentProject",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/addCommentP?comment=hello &user_id=1&project_id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"addCommentP"
+							],
+							"query": [
+								{
+									"key": "comment",
+									"value": "hello "
+								},
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "project_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addCommentTask",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/addCommentT?comment=hello &user_id=1&task_id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"addCommentT"
+							],
+							"query": [
+								{
+									"key": "comment",
+									"value": "hello "
+								},
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "task_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
